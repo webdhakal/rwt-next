@@ -7,26 +7,26 @@ const BreadcrumbNavigation = ({ customBreadcrumbs = null }) => {
 
   // Default breadcrumb mapping based on routes
   const routeBreadcrumbs = {
-    "/homepage": [{ label: "Home", path: "/homepage" }],
+    "/": [{ label: "Home", path: "/" }],
     "/product-listing-category-browse": [
-      { label: "Home", path: "/homepage" },
+      { label: "Home", path: "/" },
       { label: "Categories", path: "/product-listing-category-browse" },
     ],
     "/product-detail-page": [
-      { label: "Home", path: "/homepage" },
+      { label: "Home", path: "/" },
       { label: "Categories", path: "/product-listing-category-browse" },
       { label: "Product Details", path: "/product-detail-page" },
     ],
     "/vendor-store-profile": [
-      { label: "Home", path: "/homepage" },
+      { label: "Home", path: "/" },
       { label: "Vendors", path: "/vendor-store-profile" },
     ],
     "/shopping-cart": [
-      { label: "Home", path: "/homepage" },
+      { label: "Home", path: "/" },
       { label: "Shopping Cart", path: "/shopping-cart" },
     ],
     "/checkout-process": [
-      { label: "Home", path: "/homepage" },
+      { label: "Home", path: "/" },
       { label: "Cart", path: "/shopping-cart" },
       { label: "Checkout", path: "/checkout-process" },
     ],
@@ -74,8 +74,8 @@ const BreadcrumbNavigation = ({ customBreadcrumbs = null }) => {
               ) : (
                 <span
                   className={`truncate max-w-[150px] sm:max-w-none ${isLast
-                      ? "text-text-primary font-medium"
-                      : "text-text-secondary"
+                    ? "text-text-primary font-medium"
+                    : "text-text-secondary"
                     }`}
                   title={breadcrumb?.label}
                 >

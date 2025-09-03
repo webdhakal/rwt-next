@@ -255,7 +255,7 @@ const Homepage = () => {
           content="Discover quality products from trusted vendors. Shop with confidence."
         />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="/homepage" />
+        <link rel="canonical" href="/" />
       </Head>
 
       <div className="min-h-screen bg-background">

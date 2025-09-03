@@ -176,7 +176,7 @@ const ShoppingCart = () => {
   };
 
   const breadcrumbs = [
-    { label: "Home", path: "/homepage" },
+    { label: "Home", path: "/" },
     { label: "Shopping Cart", path: "/shopping-cart" },
   ];
 

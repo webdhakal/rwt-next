@@ -96,7 +96,7 @@ const EmptyCart = () => {
             iconSize={18}
             asChild
           >
-            <Link href="/homepage">Back to Home</Link>
+            <Link href="/">Back to Home</Link>
           </Button>
         </div>
       </div>

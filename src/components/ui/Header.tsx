@@ -49,7 +49,7 @@ const Header = () => {
             {/* Logo */}
             <div className="flex items-center">
               <Link
-                href="/homepage"
+                href="/"
                 className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-200"
                 onClick={closeMobileMenu}
               >
