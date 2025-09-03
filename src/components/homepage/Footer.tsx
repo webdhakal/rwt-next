@@ -1,11 +1,30 @@
 import React from "react";
-import Icon from "@/components/common/AppIcon";
+import Icon, { IconProps } from "@/components/common/AppIcon";
 import Link from "next/link";
 
-const Footer = () => {
+interface LinkItem {
+  label: string;
+  href: string;
+}
+
+interface FooterSection {
+  title: string;
+  links: LinkItem[];
+}
+
+interface SocialLink extends LinkItem {
+  icon: IconProps['name'];
+}
+
+interface PaymentMethod {
+  name: string;
+  icon: IconProps['name'];
+}
+
+const Footer: React.FC = () => {
   const currentYear = new Date()?.getFullYear();
 
-  const footerSections = [
+  const footerSections: FooterSection[] = [
     {
       title: "Shop",
       links: [
@@ -60,7 +79,7 @@ const Footer = () => {
     },
   ];
 
-  const socialLinks = [
+  const socialLinks: SocialLink[] = [
     { name: "Facebook", icon: "Facebook", href: "#" },
     { name: "Twitter", icon: "Twitter", href: "#" },
     { name: "Instagram", icon: "Instagram", href: "#" },
@@ -68,7 +87,7 @@ const Footer = () => {
     { name: "Linkedin", icon: "Linkedin", href: "#" },
   ];
 
-  const paymentMethods = [
+  const paymentMethods: PaymentMethod[] = [
     { name: "Visa", icon: "CreditCard" },
     { name: "Mastercard", icon: "CreditCard" },
     { name: "American Express", icon: "CreditCard" },

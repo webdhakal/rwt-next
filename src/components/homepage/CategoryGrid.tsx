@@ -1,10 +1,20 @@
 import Link from "next/link";
 import React from "react";
 import Image from "@/components/common/AppImage";
-import Icon from "@/components/common/AppIcon";
+import Icon, { IconProps } from "@/components/common/AppIcon";
 
-const CategoryGrid = () => {
-  const categories = [
+interface CategoryItem {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  icon: IconProps['name'];
+  productCount: string;
+  color: string;
+}
+
+const CategoryGrid: React.FC = () => {
+  const categories: CategoryItem[] = [
     {
       id: 1,
       name: "Electronics",

@@ -16,7 +16,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/shadcn/ui/sidebar'
-import { Link } from '@inertiajs/react'
+import Link from "next/link";
 
 export function NavProjects({
   projects,

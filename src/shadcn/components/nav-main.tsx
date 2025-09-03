@@ -16,7 +16,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from '@/shadcn/ui/sidebar';
-import { Link } from '@inertiajs/react';
+import Link from "next/link";;
 import { cn } from '../lib/utils';
 import * as LucideIcons from 'lucide-react';
 import { memo, useMemo } from 'react';

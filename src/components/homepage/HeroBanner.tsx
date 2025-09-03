@@ -145,8 +145,8 @@ const HeroBanner = () => {
             key={index}
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-200 ${index === currentSlide
-                ? "bg-white scale-110"
-                : "bg-white/50 hover:bg-white/70"
+              ? "bg-white scale-110"
+              : "bg-white/50 hover:bg-white/70"
               }`}
             aria-label={`Go to slide ${index + 1}`}
           />

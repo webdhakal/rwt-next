@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "@/components/common/AppImage";
-import Button from "@/components/ui/Button";
-import Icon from "@/components/common/AppIcon";
+import Icon, { IconProps } from "@/components/common/AppIcon";
+import { Button } from "@/shadcn/ui/button";
 
-const VendorSpotlight = () => {
-  const featuredVendors = [
+interface Vendor {
+  id: number;
+  name: string;
+  description: string;
+  logo: string;
+  banner: string;
+  rating: number;
+  reviewCount: number;
+  productCount: number;
+  categories: string[];
+  isVerified: boolean;
+  joinedYear: number;
+}
+
+const VendorSpotlight: React.FC = () => {
+  const [currentVendorIndex, setCurrentVendorIndex] = useState<number>(0);
+  const featuredVendors: Vendor[] = [
     {
       id: 1,
       name: "TechHub Electronics",
@@ -53,13 +68,27 @@ const VendorSpotlight = () => {
     },
   ];
 
-  const renderStars = (rating) => {
-    const stars = [];
+  const nextVendor = (): void => {
+    setCurrentVendorIndex((prev) =>
+      prev === featuredVendors.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevVendor = (): void => {
+    setCurrentVendorIndex((prev) =>
+      prev === 0 ? featuredVendors.length - 1 : prev - 1
+    );
+  };
+
+  const currentVendor = featuredVendors[currentVendorIndex];
+
+  const renderStars = (rating: number): JSX.Element[] => {
+    const stars: JSX.Element[] = [];
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;
 
     for (let i = 0; i < fullStars; i++) {
-      stars?.push(
+      stars.push(
         <Icon
           key={i}
           name="Star"
@@ -70,7 +99,7 @@ const VendorSpotlight = () => {
     }
 
     if (hasHalfStar) {
-      stars?.push(
+      stars.push(
         <Icon
           key="half"
           name="Star"
@@ -204,8 +233,8 @@ const VendorSpotlight = () => {
                 <Link href="/vendor-store-profile">
                   <Button
                     variant="outline"
-                    fullWidth
-                    iconName="Store"
+                    size="lg"
+                    icon="Store"
                     iconPosition="left"
                     className="group-hover:bg-accent group-hover:text-white group-hover:border-accent transition-all duration-200"
                   >

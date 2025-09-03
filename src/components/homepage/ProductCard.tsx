@@ -1,22 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, MouseEvent } from "react";
 import Link from "next/link";
 import Image from "@/components/common/AppImage";
 import Button from "@/components/ui/Button";
 import Icon from "@/components/common/AppIcon";
 
-const ProductCard = ({ product, showQuickAdd = true }) => {
-  const [isWishlisted, setIsWishlisted] = useState(
+export interface Product {
+  id: string | number;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  image: string;
+  rating?: number;
+  reviewCount?: number;
+  isWishlisted?: boolean;
+  isNew?: boolean;
+  isOnSale?: boolean;
+  discountPercentage?: number;
+}
+
+interface ProductCardProps {
+  product: Product;
+  showQuickAdd?: boolean;
+  className?: string;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ 
+  product, 
+  showQuickAdd = true,
+  className = ''
+}) => {
+  const [isWishlisted, setIsWishlisted] = useState<boolean>(
     product?.isWishlisted || false
   );
-  const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const [isAddingToCart, setIsAddingToCart] = useState<boolean>(false);
 
-  const handleWishlistToggle = (e) => {
+  const handleWishlistToggle = (e?: MouseEvent<HTMLButtonElement>) => {
     e?.preventDefault();
     e?.stopPropagation();
     setIsWishlisted(!isWishlisted);
   };
 
-  const handleQuickAdd = async (e) => {
+  const handleQuickAdd = async (e: MouseEvent<HTMLButtonElement>) => {
     e?.preventDefault();
     e?.stopPropagation();
     setIsAddingToCart(true);
@@ -26,7 +50,7 @@ const ProductCard = ({ product, showQuickAdd = true }) => {
     setIsAddingToCart(false);
   };
 
-  const renderStars = (rating) => {
+  const renderStars = (rating: number = 0) => {
     const stars = [];
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;

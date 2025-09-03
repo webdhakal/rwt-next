@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { cn } from '@/shadcn/lib/utils'
-import InputError from '@/Components/InputError'
+import InputError from '@/components/InputError'
 import { Check, Copy, Eye, EyeOff, LucideIcon, X } from 'lucide-react'
 import { Button } from './button'
 import { Textarea } from './textarea'

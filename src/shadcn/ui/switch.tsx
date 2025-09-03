@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as SwitchPrimitives from '@radix-ui/react-switch'
 
 import { cn } from '@/shadcn/lib/utils'
-import InputError from '@/Components/InputError'
+import InputError from '@/components/InputError'
 import { Label } from '@/shadcn/ui/label'
 
 const Switch = React.forwardRef<

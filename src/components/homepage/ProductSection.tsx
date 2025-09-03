@@ -1,44 +1,54 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, ReactNode } from "react";
 import Link from "next/link";
-import ProductCard from "./ProductCard";
+import ProductCard, { Product } from "./ProductCard";
 import Button from "@/components/ui/Button";
 import Icon from "@/components/common/AppIcon";
 
-const ProductSection = ({
+interface ProductSectionProps {
+  title: string;
+  subtitle?: string;
+  products: Product[];
+  viewAllLink?: string;
+  sectionId?: string;
+  children?: ReactNode;
+}
+
+const ProductSection: React.FC<ProductSectionProps> = ({
   title,
   subtitle,
-  products,
+  products = [],
   viewAllLink,
   sectionId,
+  children
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const scrollContainerRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const itemsPerView = {
     mobile: 2,
     tablet: 3,
     desktop: 4,
     large: 5,
-  };
+  } as const;
 
   const canScrollLeft = currentIndex > 0;
-  const canScrollRight = currentIndex < products?.length - itemsPerView?.mobile;
+  const canScrollRight = currentIndex < products.length - itemsPerView.mobile;
 
-  const scrollLeft = () => {
+  const scrollLeft = (): void => {
     if (canScrollLeft) {
       setCurrentIndex((prev) => Math.max(0, prev - 1));
     }
   };
 
-  const scrollRight = () => {
+  const scrollRight = (): void => {
     if (canScrollRight) {
       setCurrentIndex((prev) =>
-        Math.min(products?.length - itemsPerView?.mobile, prev + 1)
+        Math.min(products.length - itemsPerView.mobile, prev + 1)
       );
     }
   };
 
-  const scrollToIndex = (index) => {
+  const scrollToIndex = (index: number): void => {
     setCurrentIndex(index);
   };
 

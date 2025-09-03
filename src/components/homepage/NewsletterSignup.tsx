@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
-import Icon from "@/components/common/AppIcon";
+import Icon, { IconProps } from "@/components/common/AppIcon";
 
-const NewsletterSignup = () => {
-  const [email, setEmail] = useState("");
-  const [isSubscribed, setIsSubscribed] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+interface BenefitItem {
+  icon: IconProps['name'];
+  title: string;
+  description: string;
+}
 
-  const handleSubmit = async (e) => {
+const NewsletterSignup: React.FC = () => {
+  const [email, setEmail] = useState<string>("");
+  const [isSubscribed, setIsSubscribed] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e?.preventDefault();
     setError("");
 
@@ -33,7 +39,7 @@ const NewsletterSignup = () => {
     setEmail("");
   };
 
-  const benefits = [
+  const benefits: BenefitItem[] = [
     {
       icon: "Tag",
       title: "Exclusive Deals",

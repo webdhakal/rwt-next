@@ -1,6 +1,15 @@
-import React from 'react';
-import * as LucideIcons from 'lucide-react';
-import { HelpCircle } from 'lucide-react';
+import React from "react";
+import * as LucideIcons from "lucide-react";
+import { HelpCircle, LucideProps } from "lucide-react";
+
+type LucideIconComponent = React.ComponentType<LucideProps>;
+type LucideIconMap = Record<string, LucideIconComponent>;
+
+interface IconProps extends LucideProps {
+    name?: string; // allow string (from API/DB/etc)
+    className?: string;
+    fallback?: string; // optional: custom fallback icon name
+}
 
 function Icon({
     name,
@@ -8,20 +17,35 @@ function Icon({
     color = "currentColor",
     className = "",
     strokeWidth = 2,
+    fallback,
     ...props
-}) {
-    const IconComponent = LucideIcons?.[name];
+}: IconProps) {
+    const icons = LucideIcons as LucideIconMap;
+
+    const IconComponent = name ? icons[name] : null;
+    const FallbackComponent = fallback ? icons[fallback] : HelpCircle;
 
     if (!IconComponent) {
-        return <HelpCircle size={size} color="gray" strokeWidth={strokeWidth} className={className} {...props} />;
+        return (
+            <FallbackComponent
+                size={size}
+                color="gray"
+                strokeWidth={strokeWidth}
+                className={className}
+                {...props}
+            />
+        );
     }
 
-    return <IconComponent
-        size={size}
-        color={color}
-        strokeWidth={strokeWidth}
-        className={className}
-        {...props}
-    />;
+    return (
+        <IconComponent
+            size={size}
+            color={color}
+            strokeWidth={strokeWidth}
+            className={className}
+            {...props}
+        />
+    );
 }
+
 export default Icon;

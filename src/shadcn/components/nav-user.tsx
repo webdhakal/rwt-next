@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from '@/shadcn/ui/dropdown-menu'
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/shadcn/ui/sidebar'
-import { Link } from '@inertiajs/react'
+import Link from "next/link";
 
 export function NavUser({
   user,

@@ -1,4 +1,5 @@
 import { User } from '@/types/user';
+import Image from '@/components/common/AppImage';
 
 interface UserCardProps {
     user: User;
@@ -21,7 +22,7 @@ export function UserCard({ user }: UserCardProps) {
             <div className="flex items-center space-x-4">
                 <div className="flex-shrink-0">
                     {user.avatar ? (
-                        <img
+                        <Image
                             className="h-12 w-12 rounded-full object-cover"
                             src={user.avatar}
                             alt={user.name}
